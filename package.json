@@ -46,5 +46,10 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0"
-  }
+  },
+  "description": "none",
+  "main": "index.jsx",
+  "repository": "git@github.com:makcim392/kwikapp.git",
+  "author": "makcim392 <sz.makcim@gmail.com>",
+  "license": "MIT"
 }
