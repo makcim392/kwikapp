@@ -1,8 +1,22 @@
 # Kwikapp
 
+## General description
+
+Kwikapp is an e-commerce web app developed using React 18.
+
+### Package manager
+
+The package manager for this project is ```yarn```
+
 ## Installation
 
 ## Configuration
+
+## Running the project
+
+To run the project, run 
+
+```yarn start```
 
 ### Linter
 
@@ -10,7 +24,7 @@ Followed this guide: [Config Eslint and Prettier in Visual Studio Code for React
 
 ## Styling
 
-Styling was made using Chakras.
+Styling was made using Chakra UI.
 
 ## Useful commands
 
