@@ -6,6 +6,14 @@ import NavBar from './components/NavBar/NavBar';
 function App() {
   return (
     <div>
+
+      deals
+      clothing
+      technoloy
+      cart
+      login
+      profile
+
       <Box bg="blue.500" color="red" p={4}>
         This is a Chakra UI Box component.
       </Box>
