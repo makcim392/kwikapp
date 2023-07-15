@@ -1,4 +1,4 @@
-import { Button } from '@chakra-ui/react';
+import { Button, Flex, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 
 const categories = ['Deals', 'Clothing', 'Technology'];
@@ -9,12 +9,14 @@ const NavBar = () => (
     <h1>
       Welcome to Kwikapp
     </h1>
+    <Flex h={16} flexDirection="row" alignItems="center" justifyContent="space-between">
+      {
 
-    {
       categories.map((category) => (
+
         <Button
           px={16}
-        // bg={useColorModeValue('#151f21', 'gray.900')}
+          bg={useColorModeValue('#151f21', 'gray.900')}
           color="white"
           rounded="md"
           _hover={{
@@ -24,9 +26,11 @@ const NavBar = () => (
         >
           {category}
         </Button>
-      ))
-    }
 
+      ))
+
+    }
+    </Flex>
   </div>
 );
 
