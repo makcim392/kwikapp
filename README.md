@@ -11,3 +11,9 @@ Followed this guide: [Config Eslint and Prettier in Visual Studio Code for React
 ## Styling
 
 Styling was made using Chakras.
+
+## Useful commands
+
+### Create react component
+
+```npx generate-react-cli component Component``` 
