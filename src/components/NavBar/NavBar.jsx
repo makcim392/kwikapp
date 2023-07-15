@@ -1,5 +1,6 @@
 import { Button, Flex, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
+import CartWidget from '../CartWidget/CartWidget';
 
 const categories = ['Deals', 'Clothing', 'Technology'];
 
@@ -31,7 +32,9 @@ const NavBar = () => (
 
     }
     </Flex>
+    <CartWidget />
   </div>
+
 );
 
 export default NavBar;
