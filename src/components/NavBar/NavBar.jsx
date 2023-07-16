@@ -1,4 +1,8 @@
-import { Button, Flex, useColorModeValue } from '@chakra-ui/react';
+import {
+  Box,
+  Button, Flex,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import React from 'react';
 import CartWidget from '../CartWidget/CartWidget';
 
@@ -6,11 +10,11 @@ const categories = ['Deals', 'Clothing', 'Technology'];
 
 // eslint-disable-next-line react/function-component-definition
 const NavBar = () => (
-  <div>
-    <Flex h={1} flexDirection="row" justifyContent="flex-start">
+  <Flex align="baseline">
+    <Box flex="1 1 10%">
       <h1>Kwikapp 🛍️</h1>
-    </Flex>
-    <Flex h={8} flexDirection="row" justifyContent="flex-end">
+    </Box>
+    <Flex h={8} flexDirection="row" alignItems="end" justifyContent="flex-end">
       {
 
       categories.map((category) => (
@@ -33,7 +37,7 @@ const NavBar = () => (
       <CartWidget />
     </Flex>
 
-  </div>
+  </Flex>
 
 );
 
