@@ -8,7 +8,6 @@ import CartWidget from '../CartWidget/CartWidget';
 
 const categories = ['Deals', 'Clothing', 'Technology'];
 
-// eslint-disable-next-line react/function-component-definition
 const NavBar = () => (
   <Flex align="baseline">
     <Box flex="1 1 10%">
