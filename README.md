@@ -12,6 +12,8 @@ The package manager for this project is ```yarn```
 
 ## Configuration
 
+1. Run ```yarn install```
+
 ### ssh-setup for multiple github accounts
 
 1. Start SSH agent
