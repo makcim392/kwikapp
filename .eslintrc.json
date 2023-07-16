@@ -22,6 +22,11 @@
       "sourceType": "module"
     },
     "plugins": ["react"],
-    "rules": {}
+    "rules": {
+      "react/function-component-definition": ["warn", {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }]
+    }
   }
   
