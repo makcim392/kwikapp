@@ -1,34 +1,41 @@
 {
-    "env": {
-      "browser": true,
-      "es2021": true
-    },
-    "extends": ["plugin:react/recommended", "airbnb"],
-    "overrides": [
-      {
-        "files": ["*.js", "*.jsx"],
-        "rules": {
-          "import/no-extraneous-dependencies": [
-            "error",
-            {
-              "devDependencies": true
-            }
-          ]
-        }
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["plugin:react/recommended", "airbnb", "eslint:recommended"],
+  "overrides": [
+    {
+      "files": ["*.js", "*.jsx"],
+      "rules": {
+        "import/no-extraneous-dependencies": [
+          "error",
+          {
+            "devDependencies": true
+          }
+        ]
       }
-    ],
-    "parserOptions": {
-      "ecmaVersion": "latest",
-      "sourceType": "module"
-    },
-    "plugins": ["react"],
-    "rules": {
-      // avoids linter converting arrow functions to functions
-      "react/function-component-definition": ["warn", {
-        "namedComponents": "arrow-function",
-        "unnamedComponents": "arrow-function"
-      }],
-      "react/prop-types": 0 // avoids prop type enforcement
     }
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
+      "yarn": {}
+    }
+  },
+  "rules": {
+    "react/function-component-definition": ["warn", {
+      "namedComponents": "arrow-function",
+      "unnamedComponents": "arrow-function"
+    }],
+    "react/prop-types": 0
   }
-  
+}

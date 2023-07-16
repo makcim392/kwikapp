@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 const ItemListContainer = ({ greeting }) => (
@@ -7,5 +8,9 @@ const ItemListContainer = ({ greeting }) => (
     </h1>
   </div>
 );
+
+ItemListContainer.propTypes = {
+  greeting: PropTypes.string.isRequired,
+};
 
 export default ItemListContainer;
