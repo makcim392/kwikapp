@@ -2,6 +2,8 @@
 
 ## Installation
 
+After cloning the repo, run ```yarn install```
+
 ## Configuration
 
 ### Linter
