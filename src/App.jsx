@@ -5,9 +5,8 @@ import NavBar from './components/NavBar/NavBar';
 const App = () => (
   <ChakraProvider>
     <Box bg="blue.500" color="white" p={4}>
-      Kwikapp
+      <NavBar />
     </Box>
-    <NavBar />
   </ChakraProvider>
 
 );

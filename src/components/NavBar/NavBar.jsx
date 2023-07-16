@@ -7,16 +7,15 @@ const categories = ['Deals', 'Clothing', 'Technology'];
 // eslint-disable-next-line react/function-component-definition
 const NavBar = () => (
   <div>
-    <h1>
-      Welcome to Kwikapp
-    </h1>
-    <Flex h={16} flexDirection="row" alignItems="center" justifyContent="space-between">
+    <Flex h={1} flexDirection="row" justifyContent="flex-start">
+      <h1>Kwikapp 🛍️</h1>
+    </Flex>
+    <Flex h={8} flexDirection="row" justifyContent="flex-end">
       {
 
       categories.map((category) => (
-
         <Button
-          px={16}
+          px={6}
           bg={useColorModeValue('#151f21', 'gray.900')}
           color="white"
           rounded="md"
