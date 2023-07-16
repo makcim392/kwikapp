@@ -17,10 +17,10 @@ The package manager for this project is ```yarn```
 ### ssh-setup for multiple github accounts
 
 1. Start SSH agent
-eval "$(ssh-agent -s)"
+```eval "$(ssh-agent -s)"```
 
 2. Add SSH key
-ssh-add ~/.ssh/id_rsa_personal
+```ssh-add ~/.ssh/id_rsa_personal```
 
 ### Babel 
 
