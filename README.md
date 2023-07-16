@@ -18,6 +18,10 @@ Followed this guide: [Config Eslint and Prettier in Visual Studio Code for React
 
 Styling was made using Chakras.
 
+### Icons
+
+Icons library in usage is [Font awesome](https://fontawesome.com/icons)
+
 ## Useful commands
 
 ### Create react component
