@@ -7,7 +7,7 @@ import React from 'react';
 const CartWidget = () => (
   <Button>
     <div>
-      <FontAwesomeIcon icon={icon({ name: 'user-secret' })} />
+      <FontAwesomeIcon icon={icon({ name: 'cart-shopping' })} />
     </div>
     <div>
       4
