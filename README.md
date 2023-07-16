@@ -12,6 +12,11 @@ The package manager for this project is ```yarn```
 
 ## Configuration
 
+### ssh-setup for multiple github accounts
+
+1. run ```chmod +x ssh-setup.sh
+```
+
 ### Babel 
 
 There's a file called ```babel.config.js```, which helped some issues encountered while installing fortawesome icons.
