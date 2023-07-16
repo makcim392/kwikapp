@@ -8,8 +8,6 @@ const CartWidget = () => (
   <Button>
     <div>
       <FontAwesomeIcon icon={icon({ name: 'user-secret' })} />
-      {' '}
-      // Defaults to the Classic family, Solid style
     </div>
     <div>
       4
