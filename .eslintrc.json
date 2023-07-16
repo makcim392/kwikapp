@@ -23,10 +23,12 @@
     },
     "plugins": ["react"],
     "rules": {
+      // avoids linter converting arrow functions to functions
       "react/function-component-definition": ["warn", {
         "namedComponents": "arrow-function",
         "unnamedComponents": "arrow-function"
-      }]
+      }],
+      "react/prop-types": 0 // avoids prop type enforcement
     }
   }
   
