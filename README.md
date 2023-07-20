@@ -10,6 +10,8 @@ The package manager for this project is ```yarn```
 
 ## Installation
 
+After cloning the repo, run ```yarn install```
+
 ## Configuration
 
 1. Run ```yarn install```
@@ -55,6 +57,10 @@ Followed this guide: [Config Eslint and Prettier in Visual Studio Code for React
 ## Styling
 
 Styling was made using Chakra UI.
+
+### Icons
+
+Icons library in usage is [Font awesome](https://fontawesome.com/icons)
 
 ## Useful commands
 
