@@ -1,22 +1,22 @@
+import {
+  Box, Heading,
+  Image,
+  Text,
+} from '@chakra-ui/react';
 import React from 'react';
 
-const ItemDetailContainer = ({ products }) => (
-  <>
-    <h1>Item Detail Container</h1>
-    <>
-      <h2>Products:</h2>
-      <ul>
-        {products.map((product) => (
-          <li key={product.id}>
-            <h3>{product.title}</h3>
-            <p>{product.description}</p>
-            <p>{product.price}</p>
-            <img src={product.pictureUrl} alt={product.title} />
-          </li>
-        ))}
-      </ul>
-    </>
-  </>
+const ItemDetailContainer = ({ product }) => (
+  <Box borderWidth="1px" borderRadius="lg" p="4" mb="4">
+    <Image src={product.pictureUrl} alt={product.title} />
+    <Heading as="h3" size="md" mt="2">
+      {product.title}
+    </Heading>
+    <Text>{product.description}</Text>
+    <Text fontWeight="bold" mt="2">
+      $
+      {product.price}
+    </Text>
+  </Box>
 );
 
 export default ItemDetailContainer;
