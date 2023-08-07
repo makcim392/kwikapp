@@ -13,7 +13,8 @@
           {
             "devDependencies": true
           }
-        ]
+        ],
+        "react/jsx-no-useless-fragment": "off"
       }
     }
   ],

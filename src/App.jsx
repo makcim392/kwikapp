@@ -16,7 +16,6 @@ const App = () => (
         <Route exact path="/category/:id" element={<ItemListContainer />} />
         <Route exact path="/item/:id" element={<ItemDetailContainer />} />
       </Routes>
-
     </ChakraProvider>
   </BrowserRouter>
 
