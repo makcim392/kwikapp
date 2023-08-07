@@ -3,39 +3,47 @@ import {
   Button, Flex,
   useColorModeValue,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getCategories } from '../../mocks/async-mocks';
 import CartWidget from '../CartWidget/CartWidget';
 
-const categories = ['Deals', 'Clothing', 'Technology'];
+const NavBar = () => {
+  const [categories, setCategories] = useState([]);
 
-const NavBar = () => (
-  <Flex align="baseline">
-    <Box flex="1 1 10%">
-      <li><Link to="/">Kwikapp 🛍️</Link></li>
-    </Box>
-    <Flex h={8} flexDirection="row" alignItems="end" justifyContent="flex-end">
-      {
+  useEffect(() => {
+    getCategories().then((data) => setCategories(data));
+  }, []);
 
-      categories.map((category) => (
-        <Button
-          px={6}
-          bg={useColorModeValue('#151f21', 'gray.900')}
-          color="white"
-          rounded="md"
-          _hover={{
-            transform: 'translateY(-2px)',
-            boxShadow: 'lg',
-          }}
-        >
-          {category}
-        </Button>
-      ))
-    }
-      <CartWidget />
-    </Flex>
-  </Flex>
-
-);
+  return (
+    <>
+      <Flex align="baseline">
+        <Box flex="1 1 10%">
+          <li>
+            <Link to="/">Kwikapp 🛍️</Link>
+          </li>
+        </Box>
+        <Flex h={8} flexDirection="row" alignItems="end" justifyContent="flex-end">
+          {categories.map((category) => (
+            <Button
+              key={category.id}
+              px={6}
+              bg={useColorModeValue('#151f21', 'gray.900')}
+              color="white"
+              rounded="md"
+              _hover={{
+                transform: 'translateY(-2px)',
+                boxShadow: 'lg',
+              }}
+            >
+              {category.name}
+            </Button>
+          ))}
+        </Flex>
+        <CartWidget />
+      </Flex>
+    </>
+  );
+};
 
 export default NavBar;

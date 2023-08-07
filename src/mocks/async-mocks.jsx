@@ -39,7 +39,7 @@ const products = [
 const categories = [
   { id: 'category1', name: 'Categoría 1' },
   { id: 'category2', name: 'Categoría 2' },
-
+  { id: 'category3', name: 'Categoría 3' },
 ];
 
 export function getProducts() {
