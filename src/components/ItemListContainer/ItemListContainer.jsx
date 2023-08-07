@@ -1,16 +1,14 @@
+import { SimpleGrid } from '@chakra-ui/react';
 import React from 'react';
 import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer';
 
 const ItemListContainer = ({ products }) => (
-  <>
-    <h1>Item Detail Container</h1>
-    <>
-      <h2>Products:</h2>
-      {products.map((item) => (
-        <ItemDetailContainer product={item} />
-      ))}
-    </>
-  </>
+
+  <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={4}>
+    {products.map((item) => (
+      <ItemDetailContainer key={item.id} product={item} />
+    ))}
+  </SimpleGrid>
 );
 
 ItemListContainer.propTypes = {

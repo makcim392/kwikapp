@@ -20,6 +20,27 @@ const products = [
     price: 200,
     pictureUrl: 'https://via.placeholder.com/150',
   },
+  {
+    id: 3,
+    title: 'Product 3',
+    description: 'Description 3',
+    price: 300,
+    pictureUrl: 'https://via.placeholder.com/150',
+  },
+  {
+    id: 4,
+    title: 'Product 4',
+    description: 'Description 4',
+    price: 400,
+    pictureUrl: 'https://via.placeholder.com/150',
+  },
+  {
+    id: 5,
+    title: 'Product 5',
+    description: 'Description 5',
+    price: 500,
+    pictureUrl: 'https://via.placeholder.com/150',
+  },
 ];
 
 const App = () => (
