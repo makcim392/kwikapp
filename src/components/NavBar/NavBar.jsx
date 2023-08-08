@@ -25,7 +25,7 @@ const NavBar = () => {
         <Flex h={8} flexDirection="row" alignItems="end" justifyContent="flex-end">
           {categories.map((category) => (
             <>
-              <Link to={`/category/${category.id}`}>
+              <Link to={`/category/${category.id}`} key={category.id}>
                 {category.name}
                 {/* <Button
                   key={category.id}
