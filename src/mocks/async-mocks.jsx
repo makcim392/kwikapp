@@ -57,3 +57,17 @@ export function getCategories() {
     }, 500);
   });
 }
+
+export async function fetchProductById(id) {
+  // Simulate an asynchronous API call delay
+  // eslint-disable-next-line no-promise-executor-return
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  // Find the product with the specified ID
+  const product = products.find((p) => p.id === id);
+
+  if (product) {
+    return product;
+  }
+  throw new Error('Product not found');
+}

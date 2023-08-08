@@ -1,7 +1,6 @@
 import {
   Box,
-  Button, Flex,
-  useColorModeValue,
+  Flex,
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -25,19 +24,24 @@ const NavBar = () => {
         </Box>
         <Flex h={8} flexDirection="row" alignItems="end" justifyContent="flex-end">
           {categories.map((category) => (
-            <Button
-              key={category.id}
-              px={6}
-              bg={useColorModeValue('#151f21', 'gray.900')}
-              color="white"
-              rounded="md"
-              _hover={{
-                transform: 'translateY(-2px)',
-                boxShadow: 'lg',
-              }}
-            >
-              {category.name}
-            </Button>
+            <>
+              <Link to={`/category/${category.id}`}>
+                {category.name}
+                {/* <Button
+                  key={category.id}
+                  px={6}
+                  bg={useColorModeValue('#151f21', 'gray.900')}
+                  color="white"
+                  rounded="md"
+                  _hover={{
+                    transform: 'translateY(-2px)',
+                    boxShadow: 'lg',
+                  }}
+                >
+                  {category.name}
+                </Button> */}
+              </Link>
+            </>
           ))}
         </Flex>
         <CartWidget />

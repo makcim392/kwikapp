@@ -6,13 +6,24 @@ import {
   Text,
 } from '@chakra-ui/react';
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const ItemDetailContainer = ({ product }) => {
+  const { id } = useParams();
+
   const showToast = () => {
-    toast('This is a pop-up message!', { position: 'top-center' });
+    toast(`ID:${id}`, { position: 'top-center' });
   };
+
+  if (!product) {
+    return (
+      <>
+        Product not found
+      </>
+    );
+  }
 
   return (
     <Box borderWidth="1px" borderRadius="lg" p="4" mb="4">
