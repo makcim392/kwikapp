@@ -7,15 +7,12 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const ItemDetailContainer = ({ product }) => {
-  const { id } = useParams();
+  const { item } = useParams();
 
-  const showToast = () => {
-    toast(`ID:${id}`, { position: 'top-center' });
-  };
+  console.log('product al entrar a item detail: ', product);
 
   if (!product) {
     return (
@@ -36,12 +33,9 @@ const ItemDetailContainer = ({ product }) => {
         $
         {product.price}
       </Text>
-      <Button colorScheme="teal" size="md" onClick={() => showToast()}>
-        Toast
-      </Button>
-      <Link to={`/item/${product.id}`}>
-        <Button colorScheme="teal" size="md">
-          Detail
+      <Link to={`/item/${item}`}>
+        <Button>
+          Go to Product
         </Button>
       </Link>
     </Box>

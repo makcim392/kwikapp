@@ -17,8 +17,9 @@ const ItemListContainer = () => {
   return (
     <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={4}>
       {products.map((item) => (
-        <ItemDetailContainer key={item.id} product={item} />
+        <ItemDetailContainer key={item.id} product={item} categoryId={category} />
       ))}
+
     </SimpleGrid>
   );
 };
