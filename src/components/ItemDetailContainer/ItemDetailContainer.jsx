@@ -6,7 +6,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -37,8 +37,13 @@ const ItemDetailContainer = ({ product }) => {
         {product.price}
       </Text>
       <Button colorScheme="teal" size="md" onClick={() => showToast()}>
-        Detail
+        Toast
       </Button>
+      <Link to={`/item/${product.id}`}>
+        <Button colorScheme="teal" size="md">
+          Detail
+        </Button>
+      </Link>
     </Box>
   );
 };
