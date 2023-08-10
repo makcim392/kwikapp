@@ -1,44 +1,49 @@
-import {
-  Box,
-  Button,
-  Heading,
-  Image,
-  Text,
-} from '@chakra-ui/react';
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import ItemDetail from '../ItemDetail/ItemDetail';
 
-const ItemDetailContainer = ({ product }) => {
-  const { item } = useParams();
+const ItemDetailContainer = () => {
+  const products = [
+    {
+      id: 1, name: 'Product A', description: 'Product A description', stock: 5, category: 'category1',
+    },
+    {
+      id: 2, name: 'Product B', description: 'Product B description', stock: 5, category: 'category2',
+    },
+    {
+      id: 3, name: 'Product C', description: 'Product C description', stock: 5, category: 'category3',
+    },
+    {
+      id: 4, name: 'Product D', description: 'Product D description', stock: 5, category: 'category1',
+    },
+    {
+      id: 5, name: 'Product E', description: 'Product E description', stock: 5, category: 'category2',
+    },
+  ];
 
-  console.log('product al entrar a item detail: ', product);
+  const getProducts = new Promise((resolve, reject) => {
+    if (products.length > 0) {
+      setTimeout(() => {
+        resolve(products);
+      }, 2000);
+    } else {
+      reject(new Error('No data'));
+    }
+  });
 
-  if (!product) {
-    return (
-      <>
-        Product not found
-      </>
-    );
-  }
+  getProducts.then(() => {
+
+  }).catch((err) => {
+    console.log(err);
+  });
 
   return (
-    <Box borderWidth="1px" borderRadius="lg" p="4" mb="4">
-      <Image src={product.pictureUrl} alt={product.title} />
-      <Heading as="h3" size="md" mt="2">
-        {product.title}
-      </Heading>
-      <Text>{product.description}</Text>
-      <Text fontWeight="bold" mt="2">
-        $
-        {product.price}
-      </Text>
-      <Link to={`/item/${item}`}>
-        <Button>
-          Go to Product
-        </Button>
-      </Link>
-    </Box>
+    <>
+      <ItemDetail
+        products={products}
+      />
+    </>
+
   );
 };
 
