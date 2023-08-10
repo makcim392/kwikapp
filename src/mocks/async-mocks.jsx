@@ -5,6 +5,7 @@ const products = [
     description: 'Description 1',
     price: 100,
     pictureUrl: 'https://via.placeholder.com/150',
+    category: 'category1',
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ const products = [
     description: 'Description 2',
     price: 200,
     pictureUrl: 'https://via.placeholder.com/150',
+    category: 'category1',
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ const products = [
     description: 'Description 3',
     price: 300,
     pictureUrl: 'https://via.placeholder.com/150',
+    category: 'category1',
   },
   {
     id: 4,
@@ -26,6 +29,7 @@ const products = [
     description: 'Description 4',
     price: 400,
     pictureUrl: 'https://via.placeholder.com/150',
+    category: 'category3',
   },
   {
     id: 5,
@@ -33,6 +37,7 @@ const products = [
     description: 'Description 5',
     price: 500,
     pictureUrl: 'https://via.placeholder.com/150',
+    category: 'category2',
   },
 ];
 
