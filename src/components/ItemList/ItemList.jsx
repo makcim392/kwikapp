@@ -3,6 +3,10 @@ import React from 'react';
 const ItemList = ({ products }) => {
   return (
     <div>
+      ItemList works!
+      Products:
+      {' '}
+      {products.length}
       {products.map((product) => (
         <div key={product.id}>
           <h2>{product.title}</h2>
