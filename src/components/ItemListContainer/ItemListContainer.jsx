@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import ItemList from '../ItemList/ItemList';
 
 const ItemListContainer = () => {
-  const { category } = useParams();
+  const { id } = useParams();
   const [filteredProducts, setFilteredProducts] = React.useState([]);
   const products = [
     {
@@ -39,13 +39,13 @@ const ItemListContainer = () => {
   getProducts
     .then((res) => {
       console.log('res', res);
-      setFilteredProducts(res);
+      setFilteredProducts(res.filter((p) => p.category === id));
     })
     .catch((err) => {
       console.log(err);
     });
 
-  console.log('Category from params:', category);
+  console.log('Category from params:', id);
 
   console.log('products sent to itemlist: ', filteredProducts.length);
 
