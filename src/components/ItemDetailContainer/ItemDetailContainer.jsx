@@ -9,19 +9,19 @@ const ItemDetailContainer = () => {
 
   const products = [
     {
-      id: 1, name: 'Product A', description: 'Product A description', stock: 5, category: 'category1', price: 100,
+      id: 1, name: 'Product A', description: 'Product A description', stock: 5, category: 'category1', price: 100, pictureUrl: 'https://via.placeholder.com/150',
     },
     {
-      id: 2, name: 'Product B', description: 'Product B description', stock: 5, category: 'category2', price: 100,
+      id: 2, name: 'Product B', description: 'Product B description', stock: 5, category: 'category2', price: 100, pictureUrl: 'https://via.placeholder.com/150',
     },
     {
-      id: 3, name: 'Product C', description: 'Product C description', stock: 5, category: 'category3', price: 100,
+      id: 3, name: 'Product C', description: 'Product C description', stock: 5, category: 'category3', price: 100, pictureUrl: 'https://via.placeholder.com/150',
     },
     {
-      id: 4, name: 'Product D', description: 'Product D description', stock: 5, category: 'category1', price: 100,
+      id: 4, name: 'Product D', description: 'Product D description', stock: 5, category: 'category1', price: 100, pictureUrl: 'https://via.placeholder.com/150',
     },
     {
-      id: 5, name: 'Product E', description: 'Product E description', stock: 5, category: 'category2', price: 100,
+      id: 5, name: 'Product E', description: 'Product E description', stock: 5, category: 'category2', price: 100, pictureUrl: 'https://via.placeholder.com/150',
     },
   ];
 
