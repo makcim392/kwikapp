@@ -1,9 +1,14 @@
 import {
   Box,
+  Button,
   Flex,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
 } from '@chakra-ui/react';
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CartWidget from '../CartWidget/CartWidget';
 
 const NavBar = () => {
@@ -27,7 +32,6 @@ const NavBar = () => {
 
   getCategories
     .then((res) => {
-      console.log('res', res);
       setCategories(res);
     })
     .catch((err) => {
@@ -39,15 +43,18 @@ const NavBar = () => {
       <Box>
         <Link to="/">Kwikapp 🛍️</Link>
       </Box>
-      <Flex as="ul" listStyleType="none" m={0} p={0}>
-        {categories.map((cat) => (
-          <li key={cat.id} style={{ margin: '0 8px' }}>
-            <NavLink to={`/category/${cat.id}`} activeStyle={{ fontWeight: 'bold' }}>
-              {cat.name}
-            </NavLink>
-          </li>
-        ))}
-      </Flex>
+      <Menu>
+        <MenuButton as={Button} variant="link">
+          Categories
+        </MenuButton>
+        <MenuList>
+          {categories.map((cat) => (
+            <MenuItem key={cat.id}>
+              <Link to={`/category/${cat.id}`}>{cat.name}</Link>
+            </MenuItem>
+          ))}
+        </MenuList>
+      </Menu>
       <CartWidget />
     </Flex>
   );
