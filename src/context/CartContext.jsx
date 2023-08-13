@@ -3,6 +3,7 @@ import React, { createContext, useMemo, useState } from 'react';
 export const CartContext = createContext();
 const CartContextProvider = ({ children }) => {
   const [cartList, setCartList] = useState([]);
+
   const addToCart = (item, qty) => {
     const itemInCart = cartList.find((i) => i.id === item.id);
     if (itemInCart) {
@@ -19,6 +20,7 @@ const CartContextProvider = ({ children }) => {
   };
 
   const removeList = () => {
+    setCartList([]);
   };
 
   const deleteItem = (id) => {
