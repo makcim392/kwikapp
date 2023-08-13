@@ -35,24 +35,21 @@ const NavBar = () => {
     });
 
   return (
-    <>
-      <Flex align="baseline">
-        <Box flex="1 1 10%">
-          <li>
-            <Link to="/">Kwikapp 🛍️</Link>
-          </li>
-        </Box>
-        <Flex h={8} flexDirection="row" alignItems="end" justifyContent="flex-end" />
-        <>
-          {categories.map((cat) => (
-            <NavLink key={cat.id} to={`/category/${cat.id}`}>
+    <Flex align="center" justify="space-between" p={4} bg="gray.800" color="white">
+      <Box>
+        <Link to="/">Kwikapp 🛍️</Link>
+      </Box>
+      <Flex as="ul" listStyleType="none" m={0} p={0}>
+        {categories.map((cat) => (
+          <li key={cat.id} style={{ margin: '0 8px' }}>
+            <NavLink to={`/category/${cat.id}`} activeStyle={{ fontWeight: 'bold' }}>
               {cat.name}
             </NavLink>
-          ))}
-        </>
-        <CartWidget />
+          </li>
+        ))}
       </Flex>
-    </>
+      <CartWidget />
+    </Flex>
   );
 };
 
