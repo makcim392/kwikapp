@@ -38,16 +38,11 @@ const ItemListContainer = () => {
 
   getProducts
     .then((res) => {
-      console.log('res', res);
       setFilteredProducts(res.filter((p) => p.category === id));
     })
     .catch((err) => {
       console.log(err);
     });
-
-  console.log('Category from params:', id);
-
-  console.log('products sent to itemlist: ', filteredProducts.length);
 
   return (
     <ItemList
