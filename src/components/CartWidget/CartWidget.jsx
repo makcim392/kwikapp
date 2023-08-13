@@ -3,11 +3,14 @@ import { Button } from '@chakra-ui/react';
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CartWidget = () => (
   <Button>
     <div>
-      <FontAwesomeIcon icon={icon({ name: 'cart-shopping' })} />
+      <Link to="/cart">
+        <FontAwesomeIcon icon={icon({ name: 'cart-shopping' })} />
+      </Link>
     </div>
     <div>
       4
