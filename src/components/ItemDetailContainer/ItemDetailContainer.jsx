@@ -37,17 +37,11 @@ const ItemDetailContainer = () => {
 
   useEffect(() => {
     getProducts.then((res) => {
-      console.log('item id from params: ', id);
-      console.log('set item res: ', res.filter((p) => p.id === parseInt(id, 10)));
       setItem(res.filter((p) => p.id === parseInt(id, 10)));
     }).catch((err) => {
       console.log(err);
     });
   }, [id]);
-
-  console.log('Item from params:', id);
-
-  console.log('item enviado en ItemDetailContainer: ', item);
 
   return (
     <>

@@ -56,16 +56,6 @@ export const CartContextProvider = ({ children }) => {
       {children}
     </CartContext.Provider>
   );
-
-//   return (
-//     // eslint-disable-next-line react/jsx-no-constructed-context-values
-//     <CartContext.Provider value={{
-//       addItem, itemsCart, clearCart, removeItem, getItemInCart, totalPrice, countCart,
-//     }}
-//     >
-//       {children}
-//     </CartContext.Provider>
-//   );
 };
 
 export default CartContext;

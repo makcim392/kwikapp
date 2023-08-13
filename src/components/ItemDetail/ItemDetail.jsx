@@ -1,5 +1,7 @@
 import {
-  Box, Center, Image, Text, VStack,
+  Box,
+  Button,
+  Center, Image, Text, VStack,
 } from '@chakra-ui/react';
 import React from 'react';
 
@@ -27,6 +29,9 @@ const ItemDetail = ({ product }) => {
             Price: $
             {product.price.toFixed(2)}
           </Text>
+          <Button mt="0.5rem" colorScheme="teal" size="sm">
+            Add to cart
+          </Button>
         </VStack>
       </Box>
     </Center>
