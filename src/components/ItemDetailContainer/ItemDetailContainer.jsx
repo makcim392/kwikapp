@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import ItemDetail from '../ItemDetail/ItemDetail';
 
 const ItemDetailContainer = () => {
+  const [item, setItem] = useState({});
+  const { id } = useParams();
+
   const products = [
     {
       id: 1, name: 'Product A', description: 'Product A description', stock: 5, category: 'category1', price: 100,
@@ -31,16 +35,24 @@ const ItemDetailContainer = () => {
     }
   });
 
-  getProducts.then(() => {
+  useEffect(() => {
+    getProducts.then((res) => {
+      console.log('item id from params: ', id);
+      console.log('set item res: ', res.filter((p) => p.id === parseInt(id, 10)));
+      setItem(res.filter((p) => p.id === parseInt(id, 10)));
+    }).catch((err) => {
+      console.log(err);
+    });
+  }, [id]);
 
-  }).catch((err) => {
-    console.log(err);
-  });
+  console.log('Item from params:', id);
+
+  console.log('item enviado en ItemDetailContainer: ', item);
 
   return (
     <>
       <ItemDetail
-        products={products}
+        product={item[0]}
       />
     </>
   );
