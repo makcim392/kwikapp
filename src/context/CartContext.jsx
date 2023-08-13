@@ -1,42 +1,71 @@
 import React, { createContext, useMemo, useState } from 'react';
 
-export const CartContext = createContext();
-const CartContextProvider = ({ children }) => {
-  const [cartList, setCartList] = useState([]);
+const CartContext = createContext();
 
-  const addToCart = (item, qty) => {
-    const itemInCart = cartList.find((i) => i.id === item.id);
-    if (itemInCart) {
-      const updatedCart = cartList.map((i) => {
-        if (i.id === item.id) {
-          return { ...i, qty: i.qty + qty };
-        }
-        return i;
-      });
-      setCartList(updatedCart);
+export const CartContextProvider = ({ children }) => {
+  const [itemsCart, setItemsCart] = useState([]);
+
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const [countCart, setCountCart] = useState(0);
+
+  function isItemInCart(id) {
+    return itemsCart.some((e) => e.id === id);
+  }
+
+  const addItem = (item, qty) => {
+    if (isItemInCart(item.id)) {
+      const index = itemsCart.findIndex((i) => i.id === item.id);
+      const copyCart = [...itemsCart];
+      copyCart[index].qty += qty;
+      setItemsCart(copyCart);
+      setCountCart(countCart + qty);
+      setTotalPrice(totalPrice + item.price * qty);
     } else {
-      setCartList([...cartList, { ...item, qty }]);
+      const itemToAdd = { ...item, qty };
+      setItemsCart([...itemsCart, itemToAdd]);
+      setCountCart(countCart + qty);
+      setTotalPrice(totalPrice + item.price * qty);
     }
   };
 
-  const removeList = () => {
-    setCartList([]);
-  };
+  function removeItem(item, qty) {
+    let itemToRemove = itemsCart;
+    itemToRemove = itemToRemove.filter((e) => e.id !== item.id);
+    setItemsCart(itemToRemove);
+    setCountCart(countCart - qty);
+    setTotalPrice(totalPrice - item.price * qty);
+  }
 
-  const deleteItem = (id) => {
-    const filtered = cartList.filter((item) => item.id !== id);
-    setCartList(filtered);
+  function getItemInCart(id) {
+    return itemsCart.find((e) => e.id === id);
+  }
+
+  const clearCart = () => {
+    setItemsCart([]);
+    setCountCart(0);
+    setTotalPrice(0);
   };
 
   const contextValue = useMemo(() => ({
-    cartList, addToCart, removeList, deleteItem,
-  }), [cartList]); // Only update contextValue when cartList changes
+    addItem, itemsCart, clearCart, removeItem, getItemInCart, totalPrice, countCart,
+  }), [itemsCart]); // Only update contextValue when cartList changes
 
   return (
     <CartContext.Provider value={contextValue}>
       {children}
     </CartContext.Provider>
   );
+
+//   return (
+//     // eslint-disable-next-line react/jsx-no-constructed-context-values
+//     <CartContext.Provider value={{
+//       addItem, itemsCart, clearCart, removeItem, getItemInCart, totalPrice, countCart,
+//     }}
+//     >
+//       {children}
+//     </CartContext.Provider>
+//   );
 };
 
-export default CartContextProvider;
+export default CartContext;
