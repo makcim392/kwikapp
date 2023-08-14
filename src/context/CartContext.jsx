@@ -38,6 +38,7 @@ export const CartContextProvider = ({ children }) => {
   }
 
   function getItemInCart(id) {
+    console.log('getItemInCart in CartContext', id);
     return itemsCart.find((e) => e.id === id);
   }
 

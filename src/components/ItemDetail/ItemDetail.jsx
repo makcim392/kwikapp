@@ -3,9 +3,31 @@ import {
   Button,
   Center, Image, Text, VStack,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
+import CartContext from '../../context/CartContext';
+import ItemCount from '../ItemCount/ItemCount';
 
 const ItemDetail = ({ product }) => {
+  console.log('complete product in item detail: ', product);
+  const { addItem, getItemInCart } = useContext(CartContext);
+  const [isInCart, setIsInCart] = useState(false);
+
+  let { stock } = product;
+
+  const addToCart = (qty) => {
+    addItem(product, qty);
+    setIsInCart(true);
+  };
+
+  console.log('product id before getItemInCart is ', product.id);
+
+  const itemInCart = getItemInCart(product?.id);
+  if (itemInCart) {
+    // stock = product.stock - itemInCart.qty;
+    stock = product.stock;
+  }
+
   if (!product) {
     return (
       <div>
@@ -13,6 +35,12 @@ const ItemDetail = ({ product }) => {
       </div>
     );
   }
+
+  console.log('product completo: ', product);
+
+  console.log('stock de item detail:', stock);
+
+  console.log('item cart: ', itemInCart);
 
   return (
     <Center height="100vh">
@@ -27,12 +55,21 @@ const ItemDetail = ({ product }) => {
           </Text>
           <Text fontSize="xl" color="teal.500" fontWeight="semibold">
             Price: $
-            {product.price.toFixed(2)}
+            {product.price}
           </Text>
           <Button mt="0.5rem" colorScheme="teal" size="sm">
             Add to cart
           </Button>
         </VStack>
+        {isInCart ? (
+          <Link to="/cart">
+            <Button>
+              Finish purchase
+            </Button>
+          </Link>
+        ) : (
+          <ItemCount addToCart={addToCart} stock={stock} />
+        )}
       </Box>
     </Center>
   );

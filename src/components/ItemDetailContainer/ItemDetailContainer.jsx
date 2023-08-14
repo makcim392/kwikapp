@@ -12,16 +12,16 @@ const ItemDetailContainer = () => {
       id: 1, name: 'Product A', description: 'Product A description', stock: 5, category: 'category1', price: 100, pictureUrl: 'https://via.placeholder.com/150',
     },
     {
-      id: 2, name: 'Product B', description: 'Product B description', stock: 5, category: 'category2', price: 100, pictureUrl: 'https://via.placeholder.com/150',
+      id: 2, name: 'Product B', description: 'Product B description', stock: 2, category: 'category2', price: 100, pictureUrl: 'https://via.placeholder.com/150',
     },
     {
-      id: 3, name: 'Product C', description: 'Product C description', stock: 5, category: 'category3', price: 100, pictureUrl: 'https://via.placeholder.com/150',
+      id: 3, name: 'Product C', description: 'Product C description', stock: 3, category: 'category3', price: 100, pictureUrl: 'https://via.placeholder.com/150',
     },
     {
-      id: 4, name: 'Product D', description: 'Product D description', stock: 5, category: 'category1', price: 100, pictureUrl: 'https://via.placeholder.com/150',
+      id: 4, name: 'Product D', description: 'Product D description', stock: 4, category: 'category1', price: 100, pictureUrl: 'https://via.placeholder.com/150',
     },
     {
-      id: 5, name: 'Product E', description: 'Product E description', stock: 5, category: 'category2', price: 100, pictureUrl: 'https://via.placeholder.com/150',
+      id: 5, name: 'Product E', description: 'Product E description', stock: 9, category: 'category2', price: 100, pictureUrl: 'https://via.placeholder.com/150',
     },
   ];
 
@@ -37,16 +37,20 @@ const ItemDetailContainer = () => {
 
   useEffect(() => {
     getProducts.then((res) => {
-      setItem(res.filter((p) => p.id === parseInt(id, 10)));
+      const filteredItems = res.filter((p) => p.id === parseInt(id, 10));
+      setItem(filteredItems[0]);
     }).catch((err) => {
+      // eslint-disable-next-line no-console
       console.log(err);
     });
   }, [id]);
 
+  console.log('product sent from ItemDetailContainer: ', item);
+
   return (
     <>
       <ItemDetail
-        product={item[0]}
+        product={item}
       />
     </>
   );
