@@ -1,4 +1,9 @@
-import { Button } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  HStack,
+  Text, VStack,
+} from '@chakra-ui/react';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import CartContext from '../../context/CartContext';
@@ -10,38 +15,40 @@ const CartItemList = () => {
   const { itemsCart, clearCart, totalPrice } = cartContext;
 
   return (
-    <section>
+    <VStack spacing={6} align="center">
       {itemsCart.length ? (
-        <div>
+        <VStack spacing={4} w="100%" align="stretch">
           {itemsCart.map((p) => (
             <CartItem key={p.id} prod={p} />
           ))}
-          <div className="text-right mr-64">
-            <h3>
+          <Box w="100%" textAlign="right">
+            <Text fontSize="lg">
               Grand total: $
               {totalPrice}
-            </h3>
-            <Button onClick={clearCart} colorScheme="red" mt={8} mr={4}>
-              Empty cart
-            </Button>
-            <Link to="/">
-              <Button colorScheme="green" mt={8} onClick={() => clearCart()}>
-                Finish purchase
+            </Text>
+            <HStack spacing={4} mt={4} justify="flex-end">
+              <Button onClick={clearCart} colorScheme="red">
+                Empty cart
               </Button>
-            </Link>
-          </div>
-        </div>
+              <Link to="/">
+                <Button colorScheme="green" onClick={clearCart}>
+                  Finish purchase
+                </Button>
+              </Link>
+            </HStack>
+          </Box>
+        </VStack>
       ) : (
-        <div className="text-center mt-10">
-          <h3>Cart has no products</h3>
+        <VStack spacing={4} w="100%" align="center">
+          <Text fontSize="lg">Cart has no products</Text>
           <Link to="/">
-            <Button colorScheme="blue" mt={8}>
+            <Button colorScheme="blue">
               Back to home
             </Button>
           </Link>
-        </div>
+        </VStack>
       )}
-    </section>
+    </VStack>
   );
 };
 
