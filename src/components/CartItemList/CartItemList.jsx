@@ -2,7 +2,7 @@ import { Button } from '@chakra-ui/react';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import CartContext from '../../context/CartContext';
-import CartItem from '../CartItem/CartItem';
+import { CartItem } from '../CartItem/CartItem';
 
 const CartItemList = () => {
   const cartContext = useContext(CartContext);
@@ -24,8 +24,8 @@ const CartItemList = () => {
             <Button onClick={clearCart} colorScheme="red" mt={8} mr={4}>
               Empty cart
             </Button>
-            <Link to="/form">
-              <Button colorScheme="green" mt={8}>
+            <Link to="/">
+              <Button colorScheme="green" mt={8} onClick={() => clearCart()}>
                 Finish purchase
               </Button>
             </Link>
