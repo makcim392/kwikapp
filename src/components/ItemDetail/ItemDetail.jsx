@@ -1,9 +1,29 @@
 import {
-  Box, Center, Image, Text, VStack,
+  Box,
+  Button,
+  Center, Image, Text, VStack,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
+import CartContext from '../../context/CartContext';
+import ItemCount from '../ItemCount/ItemCount';
 
 const ItemDetail = ({ product }) => {
+  const { addItem, getItemInCart, quantity } = useContext(CartContext);
+  const [isInCart, setIsInCart] = useState(false);
+
+  let { stock } = product;
+
+  const addToCart = (qty) => {
+    addItem(product, qty);
+    setIsInCart(true);
+  };
+
+  const itemInCart = getItemInCart(product?.id);
+  if (itemInCart) {
+    stock = product.stock - quantity;
+  }
+
   if (!product) {
     return (
       <div>
@@ -25,9 +45,18 @@ const ItemDetail = ({ product }) => {
           </Text>
           <Text fontSize="xl" color="teal.500" fontWeight="semibold">
             Price: $
-            {product.price.toFixed(2)}
+            {product.price}
           </Text>
         </VStack>
+        {isInCart ? (
+          <Link to="/cart">
+            <Button>
+              Finish purchase
+            </Button>
+          </Link>
+        ) : (
+          <ItemCount addToCart={addToCart} stock={stock} />
+        )}
       </Box>
     </Center>
   );
