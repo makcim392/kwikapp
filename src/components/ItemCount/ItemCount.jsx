@@ -2,19 +2,15 @@
 import React, { useState } from 'react';
 
 const ItemCount = ({ stock, addToCart }) => {
-  console.log('stock in item count has been called: ', stock);
   const [count, setCount] = useState(1);
 
   const addCount = () => {
-    console.log('add count called');
     if (count < stock && stock > 0) setCount(count + 1);
   };
 
   const subtractionCount = () => {
     if (count > 1) setCount(count - 1);
   };
-
-  console.log('count: ', count);
 
   return (
     <div className="container">

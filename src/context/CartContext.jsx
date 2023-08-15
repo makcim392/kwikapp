@@ -6,8 +6,8 @@ export const CartContextProvider = ({ children }) => {
   const [itemsCart, setItemsCart] = useState([]);
 
   const [totalPrice, setTotalPrice] = useState(0);
-
   const [countCart, setCountCart] = useState(0);
+  const [quantity, setQuantity] = useState(0);
 
   function isItemInCart(id) {
     return itemsCart.some((e) => e.id === id);
@@ -38,7 +38,6 @@ export const CartContextProvider = ({ children }) => {
   }
 
   function getItemInCart(id) {
-    console.log('getItemInCart in CartContext', id);
     return itemsCart.find((e) => e.id === id);
   }
 
@@ -49,7 +48,15 @@ export const CartContextProvider = ({ children }) => {
   };
 
   const contextValue = useMemo(() => ({
-    addItem, itemsCart, clearCart, removeItem, getItemInCart, totalPrice, countCart,
+    addItem,
+    itemsCart,
+    clearCart,
+    removeItem,
+    getItemInCart,
+    totalPrice,
+    countCart,
+    quantity,
+    setQuantity,
   }), [itemsCart]); // Only update contextValue when cartList changes
 
   return (

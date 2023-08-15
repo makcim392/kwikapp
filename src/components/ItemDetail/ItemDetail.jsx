@@ -9,8 +9,7 @@ import CartContext from '../../context/CartContext';
 import ItemCount from '../ItemCount/ItemCount';
 
 const ItemDetail = ({ product }) => {
-  console.log('complete product in item detail: ', product);
-  const { addItem, getItemInCart } = useContext(CartContext);
+  const { addItem, getItemInCart, quantity } = useContext(CartContext);
   const [isInCart, setIsInCart] = useState(false);
 
   let { stock } = product;
@@ -20,12 +19,9 @@ const ItemDetail = ({ product }) => {
     setIsInCart(true);
   };
 
-  console.log('product id before getItemInCart is ', product.id);
-
   const itemInCart = getItemInCart(product?.id);
   if (itemInCart) {
-    // stock = product.stock - itemInCart.qty;
-    stock = product.stock;
+    stock = product.stock - quantity;
   }
 
   if (!product) {
@@ -57,9 +53,9 @@ const ItemDetail = ({ product }) => {
             Price: $
             {product.price}
           </Text>
-          <Button mt="0.5rem" colorScheme="teal" size="sm">
+          {/* <Button mt="0.5rem" colorScheme="teal" size="sm">
             Add to cart
-          </Button>
+          </Button> */}
         </VStack>
         {isInCart ? (
           <Link to="/cart">
