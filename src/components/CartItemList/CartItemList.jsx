@@ -2,7 +2,8 @@ import {
   Box,
   Button,
   HStack,
-  Text, VStack,
+  Text,
+  VStack,
 } from '@chakra-ui/react';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
@@ -21,7 +22,7 @@ const CartItemList = () => {
           {itemsCart.map((p) => (
             <CartItem key={p.id} prod={p} />
           ))}
-          <Box w="100%" textAlign="right">
+          <Box w="100%" p={4} mt={4} borderTop="1px solid #ccc">
             <Text fontSize="lg">
               Grand total: $
               {totalPrice}
