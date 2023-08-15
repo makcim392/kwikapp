@@ -32,12 +32,6 @@ const ItemDetail = ({ product }) => {
     );
   }
 
-  console.log('product completo: ', product);
-
-  console.log('stock de item detail:', stock);
-
-  console.log('item cart: ', itemInCart);
-
   return (
     <Center height="100vh">
       <Box p={6} borderWidth="1px" borderRadius="md" boxShadow="lg">
@@ -53,9 +47,6 @@ const ItemDetail = ({ product }) => {
             Price: $
             {product.price}
           </Text>
-          {/* <Button mt="0.5rem" colorScheme="teal" size="sm">
-            Add to cart
-          </Button> */}
         </VStack>
         {isInCart ? (
           <Link to="/cart">
