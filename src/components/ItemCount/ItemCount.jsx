@@ -1,4 +1,6 @@
-/* eslint-disable react/button-has-type */
+import {
+  Box, Button, Flex, Text,
+} from '@chakra-ui/react';
 import React, { useState } from 'react';
 
 const ItemCount = ({ stock, addToCart }) => {
@@ -13,29 +15,27 @@ const ItemCount = ({ stock, addToCart }) => {
   };
 
   return (
-    <div className="container">
-      <div className="border-solid border-2 mt-5">
-        <div className="text-center p-4">
-          <div className="mt-2">
-            <button onClick={subtractionCount} className="bg-blue-300 p-2">
-              -
-            </button>
-            <span className="m-2.5">{count}</span>
-            <button onClick={addCount} className="bg-blue-300 p-2">
-              +
-            </button>
-          </div>
-          <button onClick={() => addToCart(count)}>
-            Add to cart
-          </button>
-          <p>
-            Available stock:
-            {' '}
-            {stock}
-          </p>
-        </div>
-      </div>
-    </div>
+    <Box borderWidth="2px" borderColor="gray.300" p={4} mt={5}>
+      <Flex justifyContent="center" alignItems="center" mb={2}>
+        <Button size="sm" onClick={subtractionCount} colorScheme="blue">
+          -
+        </Button>
+        <Text mx={2.5} fontSize="lg">
+          {count}
+        </Text>
+        <Button size="sm" onClick={addCount} colorScheme="blue">
+          +
+        </Button>
+      </Flex>
+      <Button onClick={() => addToCart(count)} colorScheme="blue">
+        Add to cart
+      </Button>
+      <Text mt={2}>
+        Available stock:
+        {' '}
+        {stock}
+      </Text>
+    </Box>
   );
 };
 
