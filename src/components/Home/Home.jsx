@@ -5,6 +5,7 @@ import {
   Heading, Text,
 } from '@chakra-ui/react';
 import React from 'react';
+import Document from '../../firebase/Document';
 
 const Home = () => {
   return (
@@ -57,6 +58,7 @@ const Home = () => {
           </Text>
         </Container>
       </Box>
+      <Document />
     </Box>
   );
 };
