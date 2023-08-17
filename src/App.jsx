@@ -8,6 +8,7 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import NavBar from './components/NavBar/NavBar';
 import { CartContextProvider } from './context/CartContext';
+import Document from './firebase/Document';
 
 const App = () => (
   <>
@@ -16,6 +17,7 @@ const App = () => (
         <ChakraProvider>
           <Box bg="blue.500" color="white" p={4}>
             <NavBar />
+            <Document />
           </Box>
           <Routes>
             <Route exact path="/home" element={<Home />} />
@@ -29,7 +31,6 @@ const App = () => (
       <ToastContainer />
     </CartContextProvider>
   </>
-
 );
 
 export default App;

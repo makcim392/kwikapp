@@ -29,9 +29,10 @@ const Document = () => {
     getDocs(itemsCollection).then((snapshot) => {
       const items = snapshot.docs.map((item) => item.data());
       items.forEach((item) => dispatch(addItem(item)));
+
+      console.log('items dispatched from Document: ', items);
     });
   }, [dispatch]);
-
   return (
     <>
     </>
