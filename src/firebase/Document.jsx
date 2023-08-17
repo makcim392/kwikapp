@@ -5,8 +5,12 @@ import {
   getFirestore,
 } from 'firebase/firestore';
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import addItem from '../Redux/Item/ItemAction';
 
 const Document = () => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const db = getFirestore();
 
@@ -23,12 +27,14 @@ const Document = () => {
 
     const itemsCollection = collection(db, 'items');
     getDocs(itemsCollection).then((snapshot) => {
-      console.log('itemsCollection', snapshot.docs.map((item) => item.data()));
+      const items = snapshot.docs.map((item) => item.data());
+      items.forEach((item) => dispatch(addItem(item)));
     });
-  }, []);
+  }, [dispatch]);
 
   return (
-    <div>Document</div>
+    <>
+    </>
   );
 };
 
