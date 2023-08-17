@@ -46,6 +46,7 @@
     "react/prop-types": 0,
     "space-in-parens": 0,
     "indent": 0,
-    "default-param-last": 0
+    "default-param-last": 0,
+    "max-len": 0
   }
 }

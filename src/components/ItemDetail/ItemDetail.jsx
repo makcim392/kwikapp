@@ -12,6 +12,14 @@ const ItemDetail = ({ product }) => {
   const { addItem, getItemInCart, quantity } = useContext(CartContext);
   const [isInCart, setIsInCart] = useState(false);
 
+  if (!product || typeof product.stock !== 'number') {
+    return (
+      <div>
+        Invalid product data.
+      </div>
+    );
+  }
+
   let { stock } = product;
 
   const addToCart = (qty) => {

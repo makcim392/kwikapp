@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 const placeholderImage = 'https://via.placeholder.com/100';
 
 const Item = ({ item }) => {
+  console.log('item in Item.jsx: ', item);
   return (
     <Box
       display="flex"
