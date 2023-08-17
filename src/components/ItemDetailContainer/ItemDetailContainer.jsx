@@ -19,7 +19,7 @@ const ItemDetailContainer = () => {
       // Fetch items from Firebase and update Redux store
       dispatch(fetchItemsFromFirebase())
         .then(() => {
-          const filteredItem = itemsFromStore.find((p) => p.id === id);
+          const filteredItem = itemsFromStore.find((p) => p?.id === id);
           setItem(filteredItem || {});
           setIsLoading(false);
         })

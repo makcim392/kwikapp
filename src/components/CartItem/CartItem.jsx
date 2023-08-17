@@ -17,8 +17,8 @@ const CartItem = ({ prod: p }) => {
       borderColor="gray.100"
       align="center"
     >
-      <Image src={p.pictureUrl} alt="imagen" w="20" h="20" objectFit="cover" />
-      <Text fontSize="2xl">{p.name}</Text>
+      <Image src={p?.pictureUrl} alt="imagen" w="20" h="20" objectFit="cover" />
+      <Text fontSize="2xl">{p?.name}</Text>
       <Text>
         Quantity:
         {' '}
@@ -29,7 +29,7 @@ const CartItem = ({ prod: p }) => {
         {p.price}
       </Text>
       <Button
-        onClick={() => removeItem(p, p.qty)}
+        onClick={() => removeItem(p, p?.qty)}
         colorScheme="red"
         variant="outline"
       >
