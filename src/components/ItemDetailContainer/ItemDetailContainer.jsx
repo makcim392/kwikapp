@@ -12,7 +12,6 @@ const ItemDetailContainer = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const itemsFromStore = useSelector((state) => state.items.items);
-  console.log('itemsFromStore: ', itemsFromStore);
 
   useEffect(() => {
     setIsLoading(true);
@@ -22,8 +21,6 @@ const ItemDetailContainer = () => {
         .then(() => {
           const filteredItem = itemsFromStore.find((p) => p.id === id);
           setItem(filteredItem || {});
-          console.log('items map', itemsFromStore.map((p) => p.id));
-          console.log('filteredItem: ', filteredItem);
           setIsLoading(false);
         })
         .catch((error) => {
@@ -35,8 +32,6 @@ const ItemDetailContainer = () => {
       setIsLoading(false);
     }
   }, [id, dispatch]);
-
-  console.log('item sent from ItemDetailContainer: ', item);
 
   return (
     <>

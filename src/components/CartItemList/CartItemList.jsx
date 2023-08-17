@@ -44,7 +44,7 @@ const CartItemList = () => {
           <Text fontSize="lg">Cart has no products</Text>
           <Link to="/home">
             <Button colorScheme="blue">
-              Back to home
+              Home
             </Button>
           </Link>
         </VStack>

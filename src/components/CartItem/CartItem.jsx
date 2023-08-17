@@ -20,7 +20,7 @@ const CartItem = ({ prod: p }) => {
       <Image src={p.pictureUrl} alt="imagen" w="20" h="20" objectFit="cover" />
       <Text fontSize="2xl">{p.name}</Text>
       <Text>
-        Cantidad:
+        Quantity:
         {' '}
         {p.qty}
       </Text>

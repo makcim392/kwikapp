@@ -12,8 +12,6 @@ const ItemListContainer = () => {
   console.log('itemsFromStore: ', itemsFromStore);
 
   React.useEffect(() => {
-    setIsLoading(true); // Set loading state
-
     // Check if id parameter is present
     if (id) {
       // Filter the products when the itemsFromStore changes
