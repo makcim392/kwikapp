@@ -14,10 +14,17 @@ const ItemListContainer = () => {
   React.useEffect(() => {
     setIsLoading(true); // Set loading state
 
-    // Filter the products when the itemsFromStore changes
-    const filteredItems = itemsFromStore.filter((p) => p.category === id);
+    // Check if id parameter is present
+    if (id) {
+      // Filter the products when the itemsFromStore changes
+      const filteredItems = itemsFromStore.filter((p) => p.category === id);
 
-    setFilteredProducts(filteredItems);
+      setFilteredProducts(filteredItems);
+    } else {
+      // Show all items without filtering
+      setFilteredProducts(itemsFromStore);
+    }
+
     setIsLoading(false); // Set loading state to false once data is fetched
   }, [id, itemsFromStore]);
 
