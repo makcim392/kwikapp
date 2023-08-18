@@ -15,6 +15,14 @@ const Item = ({ item }) => {
     return <div>Error: Invalid stock value</div>;
   }
 
+  if (!item || typeof item?.stock !== 'number') {
+    return (
+      <div>
+        Invalid product data.
+      </div>
+    );
+  }
+
   return (
     <Box
       display="flex"
