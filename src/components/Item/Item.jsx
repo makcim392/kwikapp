@@ -7,6 +7,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const placeholderImage = 'https://via.placeholder.com/100';
 
@@ -16,11 +17,7 @@ const Item = ({ item }) => {
   }
 
   if (!item || typeof item?.stock !== 'number') {
-    return (
-      <div>
-        Invalid product data.
-      </div>
-    );
+    toast.error('Error: Invalid item data');
   }
 
   return (
