@@ -1,7 +1,6 @@
 import {
   Box,
   Container,
-  Grid,
   Heading, Text,
 } from '@chakra-ui/react';
 import React from 'react';
@@ -22,18 +21,6 @@ const Home = () => {
           <Heading as="h2" size="lg" mb={4}>
             Featured Products
           </Heading>
-          <Grid templateColumns="repeat(auto-fill, minmax(200px, 1fr))" gap={6}>
-            {/* Render your featured products here */}
-            {/* Example:
-            <GridItem>
-              <ProductCard
-                title="Cool Product"
-                imageUrl="https://example.com/cool-product-image.jpg"
-                price="$99.99"
-              />
-            </GridItem>
-            */}
-          </Grid>
         </Box>
         <Box as="section" mb={12}>
           <Heading as="h2" size="lg" mb={4}>

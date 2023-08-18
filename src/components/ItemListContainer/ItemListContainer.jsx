@@ -9,7 +9,6 @@ const ItemListContainer = () => {
   const [isLoading, setIsLoading] = React.useState(true);
 
   const itemsFromStore = useSelector((state) => state.items.items);
-  console.log('itemsFromStore: ', itemsFromStore);
 
   React.useEffect(() => {
     // Check if id parameter is present
@@ -25,8 +24,6 @@ const ItemListContainer = () => {
 
     setIsLoading(false); // Set loading state to false once data is fetched
   }, [id, itemsFromStore]);
-
-  console.log('item sent from listcontainer: ', filteredProducts);
 
   return (
     <>

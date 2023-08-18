@@ -3,8 +3,6 @@ import React from 'react';
 import Item from '../Item/Item';
 
 const ItemList = ({ products }) => {
-  console.log('products in ItemList: ', products);
-
   const generateRandomId = () => {
     const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let randomId = '';
