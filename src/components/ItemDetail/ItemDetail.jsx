@@ -5,6 +5,7 @@ import {
 } from '@chakra-ui/react';
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 import CartContext from '../../context/CartContext';
 import ItemCount from '../ItemCount/ItemCount';
 
@@ -60,6 +61,7 @@ const ItemDetail = ({ product }) => {
           <Link to="/cart">
             <Button>
               Finish purchase
+              {' '}
             </Button>
           </Link>
         ) : (

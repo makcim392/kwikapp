@@ -8,6 +8,7 @@ import {
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const placeholderImage = 'https://via.placeholder.com/100';
 
@@ -16,8 +17,12 @@ const Item = ({ item }) => {
     return <div>Error: Invalid stock value</div>;
   }
 
+  const error = new Error('Invalid stock value');
+
   if (!item || typeof item?.stock !== 'number') {
-    toast.error('Error: Invalid item data');
+    toast.error(`Error: ${error.message}`, {
+      position: toast.POSITION.TOP_CENTER,
+    });
   }
 
   return (
@@ -56,7 +61,7 @@ const Item = ({ item }) => {
         </Text>
         <Link to={`/item/${item?.id}`} textDecoration="none">
           <Button mt="0.5rem" colorScheme="teal" size="sm">
-            Ver detalles
+            Details
           </Button>
         </Link>
       </Box>

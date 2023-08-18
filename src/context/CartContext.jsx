@@ -1,4 +1,6 @@
 import React, { createContext, useMemo, useState } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CartContext = createContext();
 
@@ -41,10 +43,23 @@ export const CartContextProvider = ({ children }) => {
     return itemsCart.find((e) => e.id === id);
   }
 
+  const purchaseMessage = () => {
+    toast.success('Purchase sucessful!', {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
+  };
+
   const clearCart = () => {
     setItemsCart([]);
     setCountCart(0);
     setTotalPrice(0);
+  };
+
+  const finishPurchase = () => {
+    setItemsCart([]);
+    setCountCart(0);
+    setTotalPrice(0);
+    purchaseMessage();
   };
 
   const contextValue = useMemo(() => ({
@@ -57,6 +72,7 @@ export const CartContextProvider = ({ children }) => {
     countCart,
     quantity,
     setQuantity,
+    finishPurchase,
   }), [itemsCart]); // Only update contextValue when cartList changes
 
   return (

@@ -13,7 +13,9 @@ import CartItem from '../CartItem/CartItem';
 const CartItemList = () => {
   const cartContext = useContext(CartContext);
 
-  const { itemsCart, clearCart, totalPrice } = cartContext;
+  const {
+ itemsCart, clearCart, totalPrice, finishPurchase,
+} = cartContext;
 
   return (
     <VStack spacing={6} align="center">
@@ -32,7 +34,7 @@ const CartItemList = () => {
                 Empty cart
               </Button>
               <Link to="/">
-                <Button colorScheme="green" onClick={clearCart}>
+                <Button colorScheme="green" onClick={finishPurchase}>
                   Finish purchase
                 </Button>
               </Link>
