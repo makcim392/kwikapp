@@ -3,7 +3,7 @@ import {
   getDocs,
   getFirestore,
 } from 'firebase/firestore';
-import addItem from './ItemAction';
+import { addItem } from './ItemAction';
 
 const initialState = {
     items: [], // Initialize an empty array to store the items
