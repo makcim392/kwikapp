@@ -4,12 +4,19 @@ import {
   getFirestore,
 } from 'firebase/firestore';
 
-import { FETCH_ITEMS_FAILURE, FETCH_ITEMS_SUCCESS } from './ActionTypes';
+import { ADD_ITEM, FETCH_ITEMS_FAILURE, FETCH_ITEMS_SUCCESS } from './ActionTypes';
 
-const addItem = (item) => ({
-    type: 'ADD_ITEM',
-    payload: item,
-  });
+export const addItem = (item) => {
+  return (dispatch, getState) => {
+    const { items } = getState().items;
+    if (!items.some((existingItem) => existingItem.id === item.id)) {
+      dispatch({
+        type: ADD_ITEM,
+        payload: item,
+      });
+    }
+  };
+};
 
   export const fetchItemsFromFirebase = () => {
     return async (dispatch) => {

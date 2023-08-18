@@ -10,7 +10,6 @@ const initialState = {
   };
 
   const itemReducer = (state = initialState, action) => {
-    console.log('items in itemReducer: ', state.items);
     switch (action.type) {
       case 'ADD_ITEM':
         return {

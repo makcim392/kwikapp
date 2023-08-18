@@ -26,6 +26,8 @@ const ItemListContainer = () => {
     setIsLoading(false); // Set loading state to false once data is fetched
   }, [id, itemsFromStore]);
 
+  console.log('item sent from listcontainer: ', filteredProducts);
+
   return (
     <>
       {isLoading ? (
