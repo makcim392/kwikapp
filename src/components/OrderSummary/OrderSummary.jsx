@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 const OrderSummary = () => {
-    const orderId = useSelector((state) => state.orderReducer.orderId);
+    const orderId = useSelector((state) => state.orderReducer.orderID);
 
      console.log('state in OrderSummary', useSelector((state) => state.orderReducer));
 

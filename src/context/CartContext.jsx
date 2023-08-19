@@ -11,6 +11,7 @@ export const CartContextProvider = ({ children }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [countCart, setCountCart] = useState(0);
   const [quantity, setQuantity] = useState(0);
+  const [orderId, setOrderId] = useState('');
 
   function isItemInCart(id) {
     return itemsCart.some((e) => e.id === id);
@@ -117,11 +118,8 @@ export const CartContextProvider = ({ children }) => {
 
      addDoc(ordersCollection, order).then(({ id }) => {
        console.log('order id in add doc', id);
-      //  dispatch(setOrderId(id));
+       setOrderId(id);
      });
-
-     // Programmatically navigate to the "/orderSummary" route
-    //  navigate('/orderSummary');
     } catch (error) {
        console.log(error);
        toast.error('There was an error creating your order', {
@@ -142,6 +140,7 @@ export const CartContextProvider = ({ children }) => {
     setQuantity,
     finishPurchase,
     createOrder,
+    orderId,
   }), [itemsCart]); // Only update contextValue when cartList changes
 
   return (

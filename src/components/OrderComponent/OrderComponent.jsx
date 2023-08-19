@@ -1,5 +1,6 @@
 import { Button } from '@chakra-ui/react';
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import CartContext from '../../context/CartContext';
 
@@ -49,9 +50,11 @@ const OrderComponent = () => {
   // };
 
   return (
-    <Button colorScheme="green" onClick={createOrder}>
-      Finish purchase
-    </Button>
+    <Link to="/orderSummary">
+      <Button colorScheme="green" onClick={createOrder}>
+        Finish purchase
+      </Button>
+    </Link>
   );
 };
 
