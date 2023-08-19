@@ -1,3 +1,4 @@
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import React, { createContext, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -69,6 +70,66 @@ export const CartContextProvider = ({ children }) => {
     }
   };
 
+  const getDate = () => {
+    const currentDate = new Date();
+
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth() + 1;
+    const day = currentDate.getDate();
+    const hours = currentDate.getHours();
+    const minutes = currentDate.getMinutes();
+    const seconds = currentDate.getSeconds();
+
+    const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+    const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+    return `${formattedDate}-${formattedTime}`;
+    };
+
+    const calculateTotal = () => {
+      const grandTotal = itemsCart.reduce((total, item) => {
+        const subtotal = item.price * item.qty;
+        return total + subtotal;
+      }, 0);
+
+      return grandTotal;
+    };
+
+  const buyer = {
+    name: 'John Doe',
+    phone: '123-456-7890',
+    email: 'john@example.com',
+  };
+
+  const order = {
+    buyer,
+    itemsCart,
+     date: getDate(),
+    total: calculateTotal(),
+  };
+
+  const createOrder = () => {
+    try {
+     finishPurchase();
+
+     const db = getFirestore();
+     const ordersCollection = collection(db, 'orders');
+
+     addDoc(ordersCollection, order).then(({ id }) => {
+       console.log('order id in add doc', id);
+      //  dispatch(setOrderId(id));
+     });
+
+     // Programmatically navigate to the "/orderSummary" route
+    //  navigate('/orderSummary');
+    } catch (error) {
+       console.log(error);
+       toast.error('There was an error creating your order', {
+         position: toast.POSITION.BOTTOM_RIGHT,
+       });
+     }
+   };
+
   const contextValue = useMemo(() => ({
     addItem,
     itemsCart,
@@ -80,6 +141,7 @@ export const CartContextProvider = ({ children }) => {
     quantity,
     setQuantity,
     finishPurchase,
+    createOrder,
   }), [itemsCart]); // Only update contextValue when cartList changes
 
   return (
