@@ -43,11 +43,11 @@ export const CartContextProvider = ({ children }) => {
     return itemsCart.find((e) => e.id === id);
   }
 
-  const purchaseMessage = () => {
-    toast.success('Purchase sucessful!', {
-      position: toast.POSITION.BOTTOM_RIGHT,
-    });
-  };
+  // const purchaseMessage = () => {
+  //   toast.success('Purchase sucessful!', {
+  //     position: toast.POSITION.BOTTOM_RIGHT,
+  //   });
+  // };
 
   const clearCart = () => {
     setItemsCart([]);
@@ -56,10 +56,17 @@ export const CartContextProvider = ({ children }) => {
   };
 
   const finishPurchase = () => {
+    try {
     setItemsCart([]);
     setCountCart(0);
     setTotalPrice(0);
-    purchaseMessage();
+    // purchaseMessage();
+    } catch (error) {
+      console.log(error);
+      toast.error('There was an error creating your order', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+    }
   };
 
   const contextValue = useMemo(() => ({

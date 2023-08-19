@@ -9,16 +9,16 @@ const sendOrderToFirebase = (order) => {
   /*  Convert the date property to a serializable format
  This is necessary because the date property is a Date object
   and Firestore does not accept Date objects */
-  const serializableOrder = {
-    ...order,
-    date: order.date.toISOString(),
-  };
+  // const serializableOrder = {
+  //   ...order,
+  //   date: order.date.toISOString(),
+  // };
 
   const ordersCollection = db.collection('orders');
 
   console.log('non serializableOrder', order);
 
-  addDoc(ordersCollection, serializableOrder).then(({ id }) => {
+  addDoc(ordersCollection, order).then(({ id }) => {
     console.log('order id in add doc', id);
     dispatch(setOrderId(id));
   });
