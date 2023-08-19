@@ -8,6 +8,22 @@ import 'react-toastify/dist/ReactToastify.css';
 import addOrder, { setOrderId } from '../../Redux/Order/OrderActions';
 import CartContext from '../../context/CartContext';
 
+const getDate = () => {
+const currentDate = new Date();
+
+const year = currentDate.getFullYear();
+const month = currentDate.getMonth() + 1;
+const day = currentDate.getDate();
+const hours = currentDate.getHours();
+const minutes = currentDate.getMinutes();
+const seconds = currentDate.getSeconds();
+
+const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+return `${formattedDate}-${formattedTime}`;
+};
+
 const OrderComponent = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate(); // Get the history object
@@ -21,13 +37,15 @@ const OrderComponent = () => {
     email: 'john@example.com',
   };
 
+  const items = [
+    { id: 'item1', title: 'Item 1', price: 10 },
+    { id: 'item2', title: 'Item 2', price: 15 },
+  ];
+
   const order = {
     buyer,
-    items: [
-      { id: 'item1', title: 'Item 1', price: 10 },
-      { id: 'item2', title: 'Item 2', price: 15 },
-    ],
-    // date: new Date(),
+    items,
+     date: getDate(),
     total: 25,
   };
 
@@ -37,7 +55,7 @@ const OrderComponent = () => {
     dispatch(addOrder(order));
 
     const db = getFirestore();
-    const ordersCollection = collection(db, 'buyer');
+    const ordersCollection = collection(db, 'orders');
 
     addDoc(ordersCollection, order).then(({ id }) => {
       console.log('order id in add doc', id);
