@@ -9,12 +9,13 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import CartContext from '../../context/CartContext';
 import CartItem from '../CartItem/CartItem';
+import OrderComponent from '../OrderComponent/OrderComponent';
 
 const CartItemList = () => {
   const cartContext = useContext(CartContext);
 
   const {
- itemsCart, clearCart, totalPrice, finishPurchase,
+ itemsCart, clearCart, totalPrice,
 } = cartContext;
 
   return (
@@ -34,9 +35,10 @@ const CartItemList = () => {
                 Empty cart
               </Button>
               <Link to="/">
-                <Button colorScheme="green" onClick={finishPurchase}>
+                {/* <Button colorScheme="green" onClick={finishPurchase}>
                   Finish purchase
-                </Button>
+                </Button> */}
+                <OrderComponent />
               </Link>
             </HStack>
           </Box>

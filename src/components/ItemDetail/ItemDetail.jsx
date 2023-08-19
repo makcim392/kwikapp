@@ -60,7 +60,7 @@ const ItemDetail = ({ product }) => {
         {isInCart ? (
           <Link to="/cart">
             <Button>
-              Finish purchase
+              Add items to cart
               {' '}
             </Button>
           </Link>
