@@ -7,12 +7,12 @@ import CartContext from '../../context/CartContext';
 
 const OrderComponent = () => {
   const cartContext = useContext(CartContext);
-  const { finishPurchase } = cartContext;
+  const { createOrder } = cartContext;
   const navigate = useNavigate();
 
-  const createOrder = async () => {
+  const sendCreateOrder = async () => {
     try {
-      finishPurchase();
+      createOrder();
       navigate('/orderSummary');
     } catch (error) {
       console.log(error);
@@ -23,7 +23,7 @@ const OrderComponent = () => {
   };
 
   return (
-    <Button colorScheme="green" onClick={createOrder}>
+    <Button colorScheme="green" onClick={sendCreateOrder}>
       Finish purchase
     </Button>
   );

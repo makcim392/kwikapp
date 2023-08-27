@@ -8,7 +8,7 @@ import { ADD_ORDER, SET_ORDER_ID } from './ActionTypes';
   };
 };
 
-export const setOrderId = (orderId) => {
+export const setOrderIdAction = (orderId) => {
   return {
     type: SET_ORDER_ID,
     payload: orderId,

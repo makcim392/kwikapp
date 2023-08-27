@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setOrderId } from '../../Redux/Order/OrderActions';
+import { setOrderIdAction } from '../../Redux/Order/OrderActions';
 
 const OrderSummary = () => {
     const orderId = useSelector((state) => state.orderReducer.orderID);
@@ -23,7 +23,7 @@ const OrderSummary = () => {
         return () => {};
       }
       return () => {
-        dispatch(setOrderId(''));
+        dispatch(setOrderIdAction(''));
       };
     }, [orderId, dispatch]);
 

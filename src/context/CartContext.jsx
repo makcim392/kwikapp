@@ -5,6 +5,7 @@ import React, {
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { setOrderIdAction } from '../Redux/Order/OrderActions';
 
 const CartContext = createContext();
 
@@ -17,12 +18,6 @@ export const CartContextProvider = ({ children }) => {
   const [orderId, setOrderId] = useState('');
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (orderId) {
-      dispatch(setOrderId(orderId));
-    }
-  }, [orderId, dispatch]);
 
   function isItemInCart(id) {
     return itemsCart.some((e) => e.id === id);
@@ -132,6 +127,13 @@ export const CartContextProvider = ({ children }) => {
        });
      }
    };
+
+   useEffect(() => {
+    if (orderId) {
+      console.log('order id in cart context', orderId);
+      dispatch(setOrderIdAction(orderId));
+    }
+  }, [orderId, dispatch]);
 
   const contextValue = useMemo(() => ({
     addItem,
