@@ -20,7 +20,6 @@ const CartItemList = () => {
 
   useEffect(() => {
     if (orderId) {
-      console.log('called use effect in cartItemList', orderId);
       return OrderSummary;
     }
     return () => {};
@@ -50,7 +49,6 @@ const CartItemList = () => {
                 <Button colorScheme="green" onClick={createOrder}>
                   Finish purchase
                 </Button>
-                {/* <OrderComponent /> */}
               </Link>
             </HStack>
           </Box>

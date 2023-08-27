@@ -24,7 +24,6 @@ export const CartContextProvider = ({ children }) => {
   }
 
   const addItem = (item, qty) => {
-    console.log('items cart in add item before adding', itemsCart);
     if (isItemInCart(item?.id)) {
       const index = itemsCart.findIndex((i) => i?.id === item?.id);
       const copyCart = [...itemsCart];
@@ -38,7 +37,6 @@ export const CartContextProvider = ({ children }) => {
       setCountCart(countCart + qty);
       setTotalPrice(totalPrice + item.price * qty);
     }
-    console.log('items cart in add item after adding', itemsCart);
   };
 
   function removeItem(item, qty) {
@@ -60,7 +58,6 @@ export const CartContextProvider = ({ children }) => {
   };
 
   const finishPurchase = () => {
-    console.log('items cart in finish purchase', itemsCart);
     try {
     setItemsCart([]);
     setCountCart(0);
@@ -117,7 +114,6 @@ export const CartContextProvider = ({ children }) => {
      const ordersCollection = collection(db, 'orders');
 
      addDoc(ordersCollection, localOrder).then(({ id }) => {
-       console.log('order id in add cart context', id);
        setOrderId(id);
      });
     } catch (error) {
@@ -130,9 +126,7 @@ export const CartContextProvider = ({ children }) => {
 
    useEffect(() => {
     if (orderId) {
-      console.log('order id in cart context', orderId);
       dispatch(setOrderIdAction(orderId));
-      console.log('dispatched local order', localOrder);
       dispatch(addOrderAction(localOrder));
       finishPurchase();
     }
