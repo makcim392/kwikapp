@@ -16,8 +16,6 @@ const OrderSummary = () => {
     const order = useSelector((state) => state.orderReducer.order);
     const dispatch = useDispatch();
 
-     console.log('state in OrderSummary', useSelector((state) => state.orderReducer));
-
      useEffect(() => {
       if (!orderId) {
         return () => {};
@@ -33,8 +31,6 @@ const OrderSummary = () => {
       itemsCart,
       total,
     } = order;
-
-    console.log('itemsCart in order summary', itemsCart);
 
       return (
         <Box p={4} borderWidth="1px" borderRadius="md" shadow="md">
