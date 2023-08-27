@@ -19,7 +19,7 @@ const sendOrderToFirebase = (order) => {
   console.log('non serializableOrder', order);
 
   addDoc(ordersCollection, order).then(({ id }) => {
-    console.log('order id in add doc', id);
+    // console.log('order id in add doc', id);
     dispatch(setOrderId(id));
   });
   };

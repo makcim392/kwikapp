@@ -1,5 +1,8 @@
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
-import React, { createContext, useMemo, useState } from 'react';
+import React, {
+  createContext, useEffect, useMemo, useState,
+} from 'react';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -12,6 +15,14 @@ export const CartContextProvider = ({ children }) => {
   const [countCart, setCountCart] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const [orderId, setOrderId] = useState('');
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (orderId) {
+      dispatch(setOrderId(orderId));
+    }
+  }, [orderId, dispatch]);
 
   function isItemInCart(id) {
     return itemsCart.some((e) => e.id === id);
@@ -44,12 +55,6 @@ export const CartContextProvider = ({ children }) => {
   function getItemInCart(id) {
     return itemsCart.find((e) => e.id === id);
   }
-
-  // const purchaseMessage = () => {
-  //   toast.success('Purchase sucessful!', {
-  //     position: toast.POSITION.BOTTOM_RIGHT,
-  //   });
-  // };
 
   const clearCart = () => {
     setItemsCart([]);
@@ -117,7 +122,7 @@ export const CartContextProvider = ({ children }) => {
      const ordersCollection = collection(db, 'orders');
 
      addDoc(ordersCollection, order).then(({ id }) => {
-       console.log('order id in add doc', id);
+       console.log('order id in add cart context', id);
        setOrderId(id);
      });
     } catch (error) {

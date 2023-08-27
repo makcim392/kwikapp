@@ -7,14 +7,25 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setOrderId } from '../../Redux/Order/OrderActions';
 
 const OrderSummary = () => {
     const orderId = useSelector((state) => state.orderReducer.orderID);
     const order = useSelector((state) => state.orderReducer.order);
+    const dispatch = useDispatch();
 
      console.log('state in OrderSummary', useSelector((state) => state.orderReducer));
+
+     useEffect(() => {
+      if (!orderId) {
+        return () => {};
+      }
+      return () => {
+        dispatch(setOrderId(''));
+      };
+    }, [orderId, dispatch]);
 
      const calculateTotal = () => {
       if (!order || !order.items || !Array.isArray(order.items)) {
