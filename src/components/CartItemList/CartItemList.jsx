@@ -45,7 +45,7 @@ const CartItemList = () => {
               <Button onClick={clearCart} colorScheme="red">
                 Empty cart
               </Button>
-              <Link to="/">
+              <Link to="/orderSummary">
                 <Button colorScheme="green" onClick={createOrder}>
                   Finish purchase
                 </Button>
