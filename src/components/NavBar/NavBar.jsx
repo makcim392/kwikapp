@@ -43,7 +43,7 @@ const NavBar = () => {
   return (
     <Flex align="center" justify="space-between" p={4} bg="gray.800" color="white">
       <Box>
-        <Link to="/">Kwikapp 🛍️</Link>
+        <Link to="/home">Kwikapp 🛍️</Link>
       </Box>
       <Menu>
         <MenuButton as={Button} variant="link">
@@ -57,6 +57,9 @@ const NavBar = () => {
           ))}
         </MenuList>
       </Menu>
+      <Box>
+        <Link to="/">All products</Link>
+      </Box>
       <CartWidget />
     </Flex>
   );
