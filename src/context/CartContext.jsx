@@ -24,8 +24,9 @@ export const CartContextProvider = ({ children }) => {
   }
 
   const addItem = (item, qty) => {
-    if (isItemInCart(item.id)) {
-      const index = itemsCart.findIndex((i) => i.id === item.id);
+    console.log('items cart in add item before adding', itemsCart);
+    if (isItemInCart(item?.id)) {
+      const index = itemsCart.findIndex((i) => i?.id === item?.id);
       const copyCart = [...itemsCart];
       copyCart[index].qty += qty;
       setItemsCart(copyCart);
@@ -37,6 +38,7 @@ export const CartContextProvider = ({ children }) => {
       setCountCart(countCart + qty);
       setTotalPrice(totalPrice + item.price * qty);
     }
+    console.log('items cart in add item after adding', itemsCart);
   };
 
   function removeItem(item, qty) {
@@ -58,11 +60,11 @@ export const CartContextProvider = ({ children }) => {
   };
 
   const finishPurchase = () => {
+    console.log('items cart in finish purchase', itemsCart);
     try {
     setItemsCart([]);
     setCountCart(0);
     setTotalPrice(0);
-    // purchaseMessage();
     } catch (error) {
       console.log(error);
       toast.error('There was an error creating your order', {

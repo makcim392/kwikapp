@@ -26,10 +26,6 @@ const ItemDetail = ({ product }) => {
   const addToCart = (qty) => {
     addItem(product, qty);
     setIsInCart(true);
-
-    // const dispatch = useDispatch();
-
-    // dispatch(addOrder(product, qty));
   };
 
   const itemInCart = getItemInCart(product?.id);
