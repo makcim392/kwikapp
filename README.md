@@ -4,6 +4,14 @@
 
 Kwikapp is an e-commerce web app developed using React 18.
 
+## Technologies Used
+
+- **Chakra UI:** We've used Chakra UI for our visual styling. Chakra UI is a simple, modular, and accessible component library that helps us create beautiful user interfaces effortlessly.
+
+- **Redux and React Context:** For state management and local persistence, we've utilized both Redux and React Context. Redux helps manage global application state, while React Context provides local state management for components.
+
+- **Firebase:** Firebase serves as our database for storing product data and managing orders. Firebase is a powerful cloud platform that makes it easy to build and scale applications without the need for server-side infrastructure.
+
 ## Main functionalities
 
 ![Main functionalities](./docs/resources/main_functionalities.gif)
