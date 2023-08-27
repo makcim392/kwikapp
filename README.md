@@ -4,6 +4,10 @@
 
 Kwikapp is an e-commerce web app developed using React 18.
 
+## Main functionalities
+
+![Main functionalities](./docs/resources/main_functionalities.gif)
+
 ### Package manager
 
 The package manager for this project is ```yarn```
