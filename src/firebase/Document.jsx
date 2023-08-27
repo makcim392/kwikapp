@@ -5,7 +5,7 @@ import {
 } from 'firebase/firestore';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import addItem from '../Redux/Item/ItemAction';
+import { addItem } from '../Redux/Item/ItemAction';
 
 const Document = () => {
   const dispatch = useDispatch();

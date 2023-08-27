@@ -5,16 +5,28 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CartContext from '../../context/CartContext';
 import CartItem from '../CartItem/CartItem';
+import OrderSummary from '../OrderSummary/OrderSummary';
 
 const CartItemList = () => {
   const cartContext = useContext(CartContext);
+  const { createOrder } = cartContext;
+
+  const orderId = useSelector((state) => state.orderReducer.orderID);
+
+  useEffect(() => {
+    if (orderId) {
+      return OrderSummary;
+    }
+    return () => {};
+  }, [orderId]);
 
   const {
- itemsCart, clearCart, totalPrice, finishPurchase,
+ itemsCart, clearCart, totalPrice,
 } = cartContext;
 
   return (
@@ -33,8 +45,8 @@ const CartItemList = () => {
               <Button onClick={clearCart} colorScheme="red">
                 Empty cart
               </Button>
-              <Link to="/">
-                <Button colorScheme="green" onClick={finishPurchase}>
+              <Link to="/orderSummary">
+                <Button colorScheme="green" onClick={createOrder}>
                   Finish purchase
                 </Button>
               </Link>
