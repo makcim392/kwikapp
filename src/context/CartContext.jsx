@@ -111,8 +111,6 @@ export const CartContextProvider = ({ children }) => {
 
   const createOrder = () => {
     try {
-     finishPurchase();
-
      const db = getFirestore();
      const ordersCollection = collection(db, 'orders');
 
@@ -132,7 +130,9 @@ export const CartContextProvider = ({ children }) => {
     if (orderId) {
       console.log('order id in cart context', orderId);
       dispatch(setOrderIdAction(orderId));
+      console.log('dispatched local order', localOrder);
       dispatch(addOrderAction(localOrder));
+      finishPurchase();
     }
   }, [orderId, dispatch]);
 
