@@ -1,6 +1,6 @@
 import { ADD_ORDER, SET_ORDER_ID } from './ActionTypes';
 
- const addOrder = (order) => {
+ const addOrderAction = (order) => {
   console.log('order in addOrder in order actions', order);
   return {
     type: ADD_ORDER,
@@ -15,4 +15,4 @@ export const setOrderIdAction = (orderId) => {
   };
 };
 
-export default addOrder;
+export default addOrderAction;

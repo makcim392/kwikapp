@@ -5,7 +5,7 @@ import React, {
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { setOrderIdAction } from '../Redux/Order/OrderActions';
+import addOrderAction, { setOrderIdAction } from '../Redux/Order/OrderActions';
 
 const CartContext = createContext();
 
@@ -102,7 +102,7 @@ export const CartContextProvider = ({ children }) => {
     email: 'john@example.com',
   };
 
-  const order = {
+  const localOrder = {
     buyer,
     itemsCart,
      date: getDate(),
@@ -116,7 +116,7 @@ export const CartContextProvider = ({ children }) => {
      const db = getFirestore();
      const ordersCollection = collection(db, 'orders');
 
-     addDoc(ordersCollection, order).then(({ id }) => {
+     addDoc(ordersCollection, localOrder).then(({ id }) => {
        console.log('order id in add cart context', id);
        setOrderId(id);
      });
@@ -132,6 +132,7 @@ export const CartContextProvider = ({ children }) => {
     if (orderId) {
       console.log('order id in cart context', orderId);
       dispatch(setOrderIdAction(orderId));
+      dispatch(addOrderAction(localOrder));
     }
   }, [orderId, dispatch]);
 

@@ -20,6 +20,7 @@ const CartItemList = () => {
 
   useEffect(() => {
     if (orderId) {
+      console.log('called use effect in cartItemList', orderId);
       return OrderSummary;
     }
     return () => {};
